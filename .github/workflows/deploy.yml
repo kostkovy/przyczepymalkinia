@@ -1,0 +1,19 @@
+name: Auto Deploy via GitHub Runner (Direct to HTML)
+
+on:
+  push:
+    branches:
+      - main  # Zmień na master, jeśli Twoja główna gałąź tak się nazywa
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Kopiowanie plików do /var/www/html/
+      - name: Sync files directly to Apache HTML folder
+        run: |
+          rsync -av --delete --exclude='.git' --exclude='.github' ./ /var/www/html/
