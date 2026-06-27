@@ -1,6 +1,6 @@
 // === DANE PRZYCZEP ===
 const przyczepy = [
-    {img:["/img/trailer/przyczepa12.jpg","img/trailer/przyczepa13.jpg"], opis:"Przyczepa laweta", dmc:"DMC 2000 kg nr 46", wymiary:"300x150<br>Przewóz minikoparek, quadów itd.", kategoria:"B+E", cena:"100zł"},
+    {img:["img/trailer/przyczepa12.jpg","img/trailer/przyczepa13.jpg"], opis:"Przyczepa laweta", dmc:"DMC 2000 kg nr 46", wymiary:"300x150<br>Przewóz minikoparek, quadów itd.", kategoria:"B+E", cena:"100zł"},
     {img:["img/trailer/przyczepa1.jpg"], opis:"Przyczepa laweta dwuosiowa", dmc:"DMC 2700 kg nr 36", wymiary:"400x200x70 cm", kategoria:"B+E", cena:"100zł"},
     {img:["img/trailer/przyczepa2.jpg"], opis:"Przyczepa lekka dwuosiowa", dmc:"DMC 700 kg nr 35", wymiary:"250x135x160 cm", kategoria:"B", cena:"50zł"},
     {img:["img/trailer/przyczepa3.jpg"], opis:"Przyczepa lekka jednoosiowa", dmc:"DMC 700 kg nr 21", wymiary:"250x125x140 cm", kategoria:"B", cena:"50zł"},
