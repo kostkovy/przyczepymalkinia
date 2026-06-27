@@ -14,8 +14,8 @@ const przyczepy = [
 
 // === DANE PRZYCZEP DO SPRZEDAŻY ===
 const sprzedaz = [
-    {img:["img/sell/sell11.jpg","img/sell/sell12.jpg"], opis:"Przyczepa lekka jednoosiowa", dmc:"DMC 750kg", wymiary:"x", kategoria:"B", cena:"3500zł"},
-    {img:["img/sell/sell21.jpg","img/sell/sell22.jpg"], opis:"Przyczepa lekka jednoosiowa", dmc:"DMC 750kg", wymiary:"x", kategoria:"B", cena:"3500zł"},
+    {img:["img/sell/sell11.jpg","img/sell/sell12.jpg"], opis:"Przyczepa lekka jednoosiowa", dmc:"DMC 750kg", wymiary:"230x125x35 cm", kategoria:"B", cena:""},
+    {img:["img/sell/sell21.jpg","img/sell/sell22.jpg"], opis:"Przyczepa lekka jednoosiowa", dmc:"DMC 750kg", wymiary:"245x125x128 cm", kategoria:"B", cena:""},
 ];
 
 // === DANE SAMOCHODÓW / AUTOLAWET ===
@@ -43,6 +43,9 @@ function generujKartyPrzyczep(containerId, dane) {
             `<a href="${src}" class="glightbox" data-gallery="${galleryId}" style="display:none"></a>`
         ).join('');
 
+        const isSales = (lista === sprzedaz);
+        const cenaLabel = isSales ? 'Cena:' : 'Cena za dobę:';
+
         const div = document.createElement('div');
         div.classList.add('przyczepa-container');
         div.innerHTML = `
@@ -56,7 +59,7 @@ function generujKartyPrzyczep(containerId, dane) {
                     Wymiary: ${item.wymiary}<br>
                     Kategoria prawa jazdy: <span>${item.kategoria}</span>
                 </div>
-                <div class="cena">Cena: <span>${item.cena}</span></div>
+                <div class="cena">${cenaLabel} <span>${item.cena}</span></div>
             </div>
         `;
         container.appendChild(div);
@@ -114,14 +117,7 @@ window.addEventListener('scroll', () => {
     if (y === 0) nav.classList.remove('nav-hidden');
 });
 
-// === FOOTER – ANIMACJA ===
-window.addEventListener('DOMContentLoaded', () => {
-    const footer = document.querySelector('footer');
-    if (!footer) return;
-    new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) footer.classList.add('visible'); });
-    }, { threshold: 0.1 }).observe(footer);
-});
+
 
 // === HAMBURGER MENU ===
 window.addEventListener('DOMContentLoaded', () => {
@@ -130,14 +126,16 @@ window.addEventListener('DOMContentLoaded', () => {
     if (!hamburger || !navLinks) return;
 
     hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
+        const isOpen = hamburger.classList.toggle('open');
         navLinks.classList.toggle('open');
+        document.body.classList.toggle('nav-menu-open', isOpen);
     });
 
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('open');
             navLinks.classList.remove('open');
+            document.body.classList.remove('nav-menu-open');
         });
     });
 
@@ -145,6 +143,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if (!document.getElementById('nav').contains(e.target)) {
             hamburger.classList.remove('open');
             navLinks.classList.remove('open');
+            document.body.classList.remove('nav-menu-open');
         }
     });
 });

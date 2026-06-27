@@ -1,0 +1,247 @@
+.skup-section {
+    min-height: calc(100vh - 8vh);
+    padding: 6rem 1.5rem 4rem;
+    background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url('../img/back/back1.jpg') center / cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skup-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.skup-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.skup-header p {
+    color: rgba(255,255,255,0.88);
+    font-size: 1.05rem;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ===== FORMULARZ ===== */
+.skup-form-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.10);
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 640px;
+}
+
+.form-group {
+    margin-bottom: 1.4rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.form-group label .req {
+    color: #c00;
+    margin-left: 2px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #111;
+    background: #fafafa;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #c00;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(200,0,0,0.08);
+}
+
+.form-group textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+/* ===== UPLOAD ZDJĘĆ ===== */
+.upload-area {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    background: #fafafa;
+}
+
+.upload-area:hover,
+.upload-area.drag-over {
+    border-color: #c00;
+    background: #fff5f5;
+}
+
+.upload-area i {
+    font-size: 2rem;
+    color: #aaa;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.upload-area span {
+    font-size: 0.95rem;
+    color: #777;
+}
+
+.upload-area .upload-hint {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 0.3rem;
+}
+
+#file-input {
+    display: none;
+}
+
+/* ===== PODGLĄD ZDJĘĆ ===== */
+.photo-preview-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1rem;
+}
+
+.photo-thumb {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.photo-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-thumb .remove-btn {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.65);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* ===== PRZYCISK WYŚLIJ ===== */
+.btn-skup {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    background: #c00;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-skup:hover:not(:disabled) {
+    background: #a00;
+    transform: translateY(-1px);
+}
+
+.btn-skup:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* ===== KOMUNIKATY ===== */
+.form-message {
+    display: none;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.form-message.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1.5px solid #a5d6a7;
+    display: block;
+}
+
+.form-message.error {
+    background: #ffebee;
+    color: #c62828;
+    border: 1.5px solid #ef9a9a;
+    display: block;
+}
+
+/* ===== SPINNER ===== */
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 2.5px solid rgba(255,255,255,0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: none;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.btn-skup.loading .spinner { display: inline-block; }
+.btn-skup.loading .btn-label { display: none; }
+
+/* ===== RESPONSYWNOŚĆ ===== */
+@media (max-width: 600px) {
+    .skup-header h1 { font-size: 1.6rem; }
+    .skup-form-card { padding: 1.8rem 1.2rem; }
+}

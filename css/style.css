@@ -74,6 +74,7 @@ body {
     cursor: pointer;
     padding: 8px;
     z-index: 1100;
+    transition: opacity 0.35s ease;
 }
 
 #hamburger span {
@@ -128,6 +129,7 @@ body {
         padding: 0.75rem 0;
         width: 100%;
         border-bottom: 1px solid #eee;
+        color: #131111 !important;
     }
 
     #nav-links a:last-child {
@@ -242,14 +244,14 @@ body {
 
 /* ===== KARTY SAMOCHODÓW / AUTOLAWET ===== */
 .samochod-container {
-    width: 360px;
+    width: 400px;
     margin-bottom: 3rem;
     display: flex;
     flex-direction: column;
 }
 
 .samochod {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 4 / 3;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -400,15 +402,21 @@ a:hover {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* === ANIMACJE ZDJĘĆ === */
 .przyczepa,
 .samochod {
   transition: filter 0.3s ease;
   cursor: pointer;
-  aspect-ratio: 1 / 1;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.przyczepa {
+  aspect-ratio: 1 / 1;
+}
+
+.samochod {
+  aspect-ratio: 4 / 3;
 }
 
 .przyczepa:hover,
@@ -461,6 +469,22 @@ body.has-hero #hamburger span {
 body.has-hero #hamburger.open span {
   background: #111;
   filter: none;
+}
+
+/* Gdy menu mobilne jest otwarte – białe tło navbara i ciemny tekst */
+body.nav-menu-open #nav {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(14px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+body.nav-menu-open #nav .nav-logo-text {
+  color: #111 !important;
+}
+
+body.nav-menu-open #hamburger span {
+  background: #111 !important;
+  filter: none !important;
 }
 
 /* Po zjechaniu na stronie z hero – białe tło */
@@ -517,6 +541,11 @@ body.scrolled #nav {
   transform: translateY(-100%);
 }
 
+#nav.nav-hidden #hamburger {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* === LOGO === */
 #logo {
   height: auto;
@@ -532,74 +561,8 @@ body.scrolled #nav {
 }
 
 
-/* === ANIMACJE FOOTERA === */
-footer {
-  background: #000;
-  color: white;
-  text-align: center;
-  padding: 30px 0;
-  position: relative;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
 
-/* Footer widoczny */
-footer.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
-/* Animacja dla poszczególnych sekcji kontaktu */
-.kontakt {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-footer.visible .kontakt {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Opóźnienia dla kolejnych sekcji kontaktu */
-footer.visible .kontakt:nth-child(1) {
-  transition-delay: 0.1s;
-}
-
-footer.visible .kontakt:nth-child(2) {
-  transition-delay: 0.2s;
-}
-
-footer.visible .kontakt:nth-child(3) {
-  transition-delay: 0.3s;
-}
-
-footer.visible .kontakt:nth-child(4) {
-  transition-delay: 0.4s;
-}
-
-/* Animacja dla nagłówków w footerze */
-.headertwo {
-  position: relative;
-  overflow: hidden;
-}
-
-.headertwo::before {
-  content: "";
-  position: absolute;
-  left: -100%;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.8s ease;
-}
-
-footer.visible .headertwo::before {
-  left: 100%;
-}
 
 /* Animacja dla kropki w nagłówku */
 .dot {
@@ -916,6 +879,7 @@ footer::before {
     font-size: 2.2rem;
     margin-bottom: 3rem;
     position: relative;
+    padding-top: 4.5rem;
 }
 
 .section-title::after {
@@ -1102,7 +1066,7 @@ footer::before {
     .hero-buttons      { gap: 0.75rem; }
     .btn-primary,
     .btn-secondary     { font-size: 1rem; padding: 0.6rem 1.4rem; }
-    .section-title     { font-size: 1.4rem; margin-bottom: 1.5rem; }
+    .section-title     { font-size: 1.4rem; margin-bottom: 1.5rem; padding-top:0px  }
     .about-section     { padding: 3rem 1.25rem; }
     .about-text h2     { font-size: 1.5rem; }
     .about-text p      { font-size: 1rem; }
