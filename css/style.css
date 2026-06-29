@@ -771,7 +771,8 @@ footer::before {
     justify-content: center;
 }
 
-.hero-bg {
+.hero-bg,
+.hero-video {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -1150,6 +1151,566 @@ footer::before {
     .glightbox-clean .gnext:hover, 
     .glightbox-clean .gprev:hover {
         background-color: rgba(0, 0, 0, 0.8) !important;
+    }
+}
+
+/* Zapobieganie przesunięciom/rozbijaniu layoutu flexbox (stopki) przy otwartym GLightbox */
+body.glightbox-open,
+html.glightbox-open body {
+    display: block !important;
+}
+
+/* Ukrycie stopki pod lightboxem, aby zapobiec jej nakładaniu/rozjeżdżaniu */
+body.glightbox-open #containertwo,
+html.glightbox-open #containertwo {
+    display: none !important;
+}
+
+/* ===== SEKCJA MAPY I LOKALIZACJI ===== */
+.map-section {
+    padding: 5rem 2rem;
+    background: #fdfdfd;
+}
+
+.map-container {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 3rem;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: rgba(149, 157, 165, 0.15) 0px 8px 24px;
+    overflow: hidden;
+}
+
+.map-info {
+    flex: 1;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.map-info h3 {
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #111;
+}
+
+.map-info p {
+    font-size: 1.05rem;
+    color: #555;
+    margin: 0.6rem 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.map-info p i {
+    color: #c00;
+    width: 20px;
+    text-align: center;
+}
+
+.map-info p a {
+    color: #555;
+    transition: color 0.2s;
+}
+
+.map-info p a:hover {
+    color: #c00;
+}
+
+.map-hours {
+    margin: 1.5rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.map-hours h4 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    color: #222;
+}
+
+.map-hours p {
+    font-size: 0.95rem;
+    margin: 0.4rem 0;
+}
+
+.map-hours span {
+    font-weight: bold;
+    color: #111;
+    margin-left: auto;
+}
+
+.btn-map {
+    align-self: flex-start;
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+}
+
+.map-iframe-wrapper {
+    flex: 1.2;
+    min-height: 450px;
+    position: relative;
+}
+
+.map-iframe-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsywność dla mapy */
+@media only screen and (max-width: 900px) {
+    .map-container {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .map-info {
+        padding: 2rem;
+    }
+    
+    .map-iframe-wrapper {
+        min-height: 350px;
+    }
+}
+
+/* ===== SEKCJA OPINII KLIENTÓW ===== */
+.reviews-section {
+    padding: 5rem 2rem;
+    background: #f5f5f5;
+    text-align: center;
+}
+
+.reviews-summary {
+    max-width: 500px;
+    margin: 0 auto 3rem;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: rgba(149, 157, 165, 0.1) 0px 4px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rating-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #111;
+    line-height: 1;
+}
+
+.rating-stars, .review-stars {
+    color: #ffc107;
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
+}
+
+.rating-text {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.btn-review {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1.5px solid #ddd;
+    background: white;
+    color: #333;
+    padding: 0.7rem 1.4rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.btn-review i {
+    color: #4285F4;
+    font-size: 1.1rem;
+}
+
+.btn-review:hover {
+    background: #fdfdfd;
+    border-color: #bbb;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.reviews-grid {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.review-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: left;
+    width: 320px;
+    box-shadow: rgba(149, 157, 165, 0.1) 0px 4px 12px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: rgba(149, 157, 165, 0.15) 0px 8px 24px;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+    position: relative;
+    width: 100%;
+}
+
+.review-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.review-author {
+    font-size: 1rem;
+    margin: 0;
+    color: #111;
+    font-weight: bold;
+}
+
+.review-date {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.review-google-icon {
+    margin-left: auto;
+    color: #4285F4;
+    font-size: 1.2rem;
+}
+
+.review-text {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 1rem;
+    font-style: italic;
+    flex-grow: 1;
+}
+
+/* Responsywność opinii */
+@media only screen and (max-width: 768px) {
+    .review-card {
+        width: 100%;
+    }
+}
+
+/* ===== PŁYWAJĄCY DYMEK TELEFONU (CALL FAB) ===== */
+.phone-bubble {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: #2db742; /* Ładna zieleń słuchawki */
+    color: white;
+    border-radius: 50%;
+    display: none; /* Ukryty na komputerach/desktopach */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(45, 183, 66, 0.4);
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+.phone-bubble i {
+    font-size: 1.6rem;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+/* Animacja rozchodzącego się światła (pulsowanie) */
+.phone-bubble::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #2db742;
+    opacity: 0.4;
+    z-index: -1;
+    animation: pulseRing 2s infinite ease-in-out;
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Hover efekty */
+.phone-bubble:hover {
+    transform: scale(1.08);
+    background-color: #259f37;
+    box-shadow: 0 6px 20px rgba(45, 183, 66, 0.5);
+}
+
+.phone-bubble:hover i {
+    transform: rotate(15deg) scale(1.1); /* Delikatne przechylenie słuchawki na hover */
+}
+
+/* Ukrywanie dymka podczas otwartego Lightboxa */
+body.glightbox-open .phone-bubble {
+    display: none !important;
+}
+
+/* Dostosowanie dla urządzeń mobilnych */
+@media only screen and (max-width: 768px) {
+    .phone-bubble {
+        display: flex; /* Pokazujemy tylko na telefonach/mobilkach */
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+    }
+    .phone-bubble i {
+        font-size: 1.4rem;
+    }
+}
+
+/* ===== PODSTRONA POMOC DROGOWA ===== */
+.badge-danger {
+    background-color: #c00;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 15px rgba(204,0,0,0.4);
+}
+
+.btn-call-now {
+    animation: pulseButton 2s infinite ease-in-out;
+}
+
+@keyframes pulseButton {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+
+.pomoc-services {
+    padding: 5rem 2rem;
+    background: #ffffff;
+    text-align: center;
+}
+
+.services-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: #fdfdfd;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    width: 250px;
+    box-shadow: rgba(149, 157, 165, 0.1) 0px 4px 12px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: rgba(149, 157, 165, 0.15) 0px 8px 24px;
+}
+
+.service-card i {
+    font-size: 2.8rem;
+    color: #c00; /* Czerwone akcenty dla pomocy drogowej */
+    margin-bottom: 1.5rem;
+}
+
+.service-card h3 {
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #111;
+}
+
+.service-card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.pomoc-coverage {
+    padding: 5rem 2rem;
+    background: #f9f9f9;
+}
+
+.coverage-inner {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 4rem;
+    align-items: center;
+}
+
+.coverage-text {
+    flex: 1.2;
+}
+
+.coverage-text h2 {
+    font-size: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #111;
+}
+
+.coverage-text p {
+    font-size: 1.05rem;
+    color: #444;
+    line-height: 1.7;
+}
+
+.coverage-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.coverage-list li {
+    font-size: 1rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.coverage-list li i {
+    color: #c00;
+    font-size: 0.8rem;
+}
+
+.coverage-note {
+    font-style: italic;
+    color: #666 !important;
+}
+
+.coverage-cta {
+    flex: 0.8;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    box-shadow: rgba(149, 157, 165, 0.12) 0px 8px 24px;
+    border-top: 4px solid #c00;
+    box-sizing: border-box;
+}
+
+.coverage-cta i {
+    font-size: 3rem;
+    color: #c00;
+    margin-bottom: 1.2rem;
+    animation: flashAlert 2.5s infinite;
+}
+
+@keyframes flashAlert {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.coverage-cta h3 {
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    color: #111;
+}
+
+.coverage-cta p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Responsywność dla pomocy drogowej */
+@media only screen and (max-width: 900px) {
+    .coverage-inner {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .coverage-cta {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .pomoc-hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .pomoc-hero-content p {
+        font-size: 1.1rem;
+    }
+    .service-card {
+        width: 100%;
+    }
+    .coverage-list {
+        grid-template-columns: 1fr;
     }
 }
 

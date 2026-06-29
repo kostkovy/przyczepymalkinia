@@ -1,4 +1,8 @@
-// === DANE PRZYCZEP ===
+// ==========================================
+// 1. DANE PRZYCZEP I SAMOCHODÓW
+// ==========================================
+
+// === DANE PRZYCZEP (WYNAJEM) ===
 const przyczepy = [
     {img:["img/trailer/przyczepa12.jpg","img/trailer/przyczepa13.jpg"], opis:"Przyczepa laweta", dmc:"DMC 2000 kg nr 46", wymiary:"300x150<br>Przewóz minikoparek, quadów itd.", kategoria:"B+E", cena:"100zł"},
     {img:["img/trailer/przyczepa1.jpg"], opis:"Przyczepa laweta dwuosiowa", dmc:"DMC 2700 kg nr 36", wymiary:"400x200x70 cm", kategoria:"B+E", cena:"100zł"},
@@ -12,10 +16,15 @@ const przyczepy = [
     {img:["img/trailer/przyczepa11.jpg"], opis:"Przyczepa lekka jednoosiowa", dmc:"DMC 750 kg nr 41", wymiary:"375x210", kategoria:"B", cena:"100zł"}
 ];
 
-// === DANE PRZYCZEP DO SPRZEDAŻY ===
+// === DANE PRZYCZEP DO SPRZEDAŻY (NOWE) ===
 const sprzedaz = [
     {img:["img/sell/sell11.jpg","img/sell/sell12.jpg"], opis:"Przyczepa lekka jednoosiowa", dmc:"DMC 750kg", wymiary:"230x125x35 cm", kategoria:"B", cena:""},
     {img:["img/sell/sell21.jpg","img/sell/sell22.jpg"], opis:"Przyczepa lekka jednoosiowa", dmc:"DMC 750kg", wymiary:"245x125x128 cm", kategoria:"B", cena:""},
+];
+
+// === DANE PRZYCZEP DO SPRZEDAŻY (UŻYWANE) ===
+const uzywane = [
+
 ];
 
 // === DANE SAMOCHODÓW / AUTOLAWET ===
@@ -31,20 +40,27 @@ const samochody = [
     },
 ];
 
+// ==========================================
+// 2. FUNKCJE GENERUJĄCE KARTY
+// ==========================================
+
 // === GENERUJ KARTY PRZYCZEP ===
-function generujKartyPrzyczep(containerId, dane) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
+function generujKartyPrzyczep(container, dane, typPrefix = 'przyczepa') {
     const lista = dane || przyczepy;
 
     lista.forEach((item, idx) => {
-        const galleryId = `przyczepa-${idx}`;
+        // Unikalny prefix gwarantuje separację galerii GLightbox między podstronami
+        const galleryId = `${typPrefix}-${idx}`;
         const extraLinks = item.img.slice(1).map(src =>
             `<a href="${src}" class="glightbox" data-gallery="${galleryId}" style="display:none"></a>`
         ).join('');
 
-        const isSales = (lista === sprzedaz);
-        const cenaLabel = isSales ? 'Cena:' : 'Cena za dobę:';
+        // Dynamiczna etykieta ceny w zależności od przeznaczenia przyczepy
+        let cenaLabel = 'Cena za dobę:';
+        if (typPrefix === 'sprzedaz' || typPrefix === 'uzywane') {
+            cenaLabel = item.cena ? 'Cena:' : 'Cena: do uzgodnienia';
+        }
+        const wyswietlanaCena = item.cena ? `<span>${item.cena}</span>` : '';
 
         const div = document.createElement('div');
         div.classList.add('przyczepa-container');
@@ -59,7 +75,7 @@ function generujKartyPrzyczep(containerId, dane) {
                     Wymiary: ${item.wymiary}<br>
                     Kategoria prawa jazdy: <span>${item.kategoria}</span>
                 </div>
-                <div class="cena">${cenaLabel} <span>${item.cena}</span></div>
+                <div class="cena">${cenaLabel} ${wyswietlanaCena}</div>
             </div>
         `;
         container.appendChild(div);
@@ -67,10 +83,7 @@ function generujKartyPrzyczep(containerId, dane) {
 }
 
 // === GENERUJ KARTY SAMOCHODÓW ===
-function generujKartySamochodow(containerId) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-
+function generujKartySamochodow(container) {
     samochody.forEach((item, idx) => {
         const galleryId = `samochod-${idx}`;
         const extraLinks = item.img.slice(1).map(src =>
@@ -101,6 +114,22 @@ function generujKartySamochodow(containerId) {
     });
 }
 
+// === GENERUJ DYMEK TELEFONU (FLOATING CALL BUTTON) ===
+function generujDymekTelefonu() {
+    if (document.querySelector('.phone-bubble')) return; // Zabezpieczenie przed podwójnym dodaniem
+
+    const bubble = document.createElement('a');
+    bubble.href = 'tel:608719311';
+    bubble.className = 'phone-bubble';
+    bubble.setAttribute('aria-label', 'Zadzwoń do nas');
+    bubble.innerHTML = '<i class="fa-solid fa-phone"></i>';
+    document.body.appendChild(bubble);
+}
+
+// ==========================================
+// 3. OBSŁUGA INTERFEJSU (NAVBAR & MENU)
+// ==========================================
+
 // === NAVBAR – CHOWANIE / POKAZYWANIE ===
 window.addEventListener('DOMContentLoaded', () => {
     const nav = document.getElementById('nav');
@@ -112,12 +141,12 @@ window.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('scroll', () => {
     const nav = document.getElementById('nav');
     const y = window.scrollY;
+    if (nav) {
+        if (y > 10) nav.classList.add('nav-hidden');
+        if (y === 0) nav.classList.remove('nav-hidden');
+    }
     document.body.classList.toggle('scrolled', y > 20);
-    if (y > 10) nav.classList.add('nav-hidden');
-    if (y === 0) nav.classList.remove('nav-hidden');
 });
-
-
 
 // === HAMBURGER MENU ===
 window.addEventListener('DOMContentLoaded', () => {
@@ -140,7 +169,8 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('click', (e) => {
-        if (!document.getElementById('nav').contains(e.target)) {
+        const navContainer = document.getElementById('nav');
+        if (navContainer && !navContainer.contains(e.target)) {
             hamburger.classList.remove('open');
             navLinks.classList.remove('open');
             document.body.classList.remove('nav-menu-open');
@@ -148,25 +178,41 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// === DOM READY – GENEROWANIE KART + GLIGHTBOX ===
+// ==========================================
+// 4. INICJALIZACJA DANYCH I GALERII (DOM READY)
+// ==========================================
 window.addEventListener('DOMContentLoaded', () => {
-    const path = window.location.pathname;
+    // Generujemy pływający dymek telefonu
+    generujDymekTelefonu();
 
-    if (path.includes('wynajem.html')) {
-        generujKartySamochodow('container');
-    } else if (path.includes('przyczepy.html')) {
-        generujKartyPrzyczep('container', przyczepy);
-    } else if (path.includes('sprzedaz.html')) {
-        generujKartyPrzyczep('container', sprzedaz);
+    const container = document.getElementById('container');
+    if (container) {
+        const path = window.location.pathname;
+        const segments = path.split('/').filter(Boolean);
+        const page = (segments[segments.length - 1] || '').toLowerCase();
+
+        // Generujemy karty w zależności od podstrony
+        if (page.includes('wynajem')) {
+            generujKartySamochodow(container);
+        } else if (page.includes('przyczepy')) {
+            generujKartyPrzyczep(container, przyczepy, 'przyczepa');
+        } else if (page.includes('sprzedaz')) {
+            generujKartyPrzyczep(container, sprzedaz, 'sprzedaz');
+        } else if (page.includes('uzywane')) {
+            generujKartyPrzyczep(container, uzywane, 'uzywane');
+        }
     }
 
+    // Uruchomienie GLightbox z lekkim opóźnieniem dla stabilności renderowania DOM
     if (typeof GLightbox !== 'undefined') {
-        GLightbox({
-            selector: '.glightbox',
-            touchNavigation: true,
-            loop: true,
-            zoomable: true,
-            draggable: true,
-        });
+        setTimeout(() => {
+            GLightbox({
+                selector: '.glightbox',
+                touchNavigation: true,
+                loop: true,
+                zoomable: true,
+                draggable: true,
+            });
+        }, 50);
     }
 });
