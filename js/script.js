@@ -23,8 +23,8 @@ const sprzedaz = [
 ];
 
 // === DANE PRZYCZEP DO SPRZEDAŻY (UŻYWANE) ===
-const uzywane = [
-
+const skup = [
+    {img:["img/used/used1.jpg","img/used/used2.jpg","img/used/used3.jpg"], opis:"Przyczepa lekka dwuosiowa", dmc:"DMC 750kg", wymiary:"", kategoria:"B", cena:""},
 ];
 
 // === DANE SAMOCHODÓW / AUTOLAWET ===
@@ -57,7 +57,7 @@ function generujKartyPrzyczep(container, dane, typPrefix = 'przyczepa') {
 
         // Dynamiczna etykieta ceny w zależności od przeznaczenia przyczepy
         let cenaLabel = 'Cena za dobę:';
-        if (typPrefix === 'sprzedaz' || typPrefix === 'uzywane') {
+        if (typPrefix === 'sprzedaz' || typPrefix === 'skup') {
             cenaLabel = item.cena ? 'Cena:' : 'Cena: do uzgodnienia';
         }
         const wyswietlanaCena = item.cena ? `<span>${item.cena}</span>` : '';
@@ -198,8 +198,8 @@ window.addEventListener('DOMContentLoaded', () => {
             generujKartyPrzyczep(container, przyczepy, 'przyczepa');
         } else if (page.includes('sprzedaz')) {
             generujKartyPrzyczep(container, sprzedaz, 'sprzedaz');
-        } else if (page.includes('uzywane')) {
-            generujKartyPrzyczep(container, uzywane, 'uzywane');
+        } else if (page.includes('skup')) {
+            generujKartyPrzyczep(container, skup, 'skup');
         }
     }
 
