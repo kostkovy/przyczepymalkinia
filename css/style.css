@@ -18,6 +18,12 @@ body > * {
     flex-shrink: 0;
 }
 
+#rezerw
+{
+    font-size: 1rem;
+    font-weight: normal;
+}
+
 /* ===== NAV ===== */
 #nav {
     background-color: rgb(255, 255, 255);
@@ -871,7 +877,7 @@ footer::before {
 /* ===== O NAS ===== */
 .about-section {
     padding: 6rem 2rem;
-    background: #fff;
+    background: #f5f5f5;
 }
 
 .about-inner {
