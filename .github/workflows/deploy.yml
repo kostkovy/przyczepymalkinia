@@ -1,4 +1,4 @@
-name: Auto Deploy via GitHub Runner (Direct to HTML)
+name: Auto Deploy via GitHub Runner (Nginx Docker)
 
 on:
   push:
@@ -7,13 +7,17 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: self-hosted  # Twój obecny lokalny runner to obsłuży
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Kopiowanie plików do /var/www/html/
-      - name: Sync files directly to Apache HTML folder
+      # Kopiowanie plików prosto do folderu, który czyta Nginx w Dockerze
+      - name: Sync files directly to Nginx Docker folder
         run: |
-          rsync -av --delete --exclude='.git' --exclude='.github' ./ /var/www/html/
+          rsync -av --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='nginx.conf' \
+            ./ ~/strona_www/html/
