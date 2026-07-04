@@ -16,8 +16,9 @@ jobs:
       # Kopiowanie plików prosto do folderu, który czyta Nginx w Dockerze
       - name: Sync files directly to Nginx Docker folder
         run: |
-          rsync -av --delete \
+          rsync -rlptD -v --delete \
             --exclude='.git' \
             --exclude='.github' \
             --exclude='nginx.conf' \
+            --exclude='.idea' \
             ./ ~/strona_www/html/
