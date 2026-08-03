@@ -10,6 +10,7 @@ const przyczepy = [
     {img:["img/trailer/przyczepa2.jpg"], opis:"Przyczepa lekka dwuosiowa", dmc:"DMC 700 kg nr 35", wymiary:"250x135x160 cm", kategoria:"B", cena:"50zł"},
     {img:["img/trailer/przyczepa3.jpg"], opis:"Przyczepa lekka jednoosiowa", dmc:"DMC 700 kg nr 21", wymiary:"250x125x140 cm", kategoria:"B", cena:"50zł"},
     {img:["img/trailer/przyczepa41.jpg"], opis:"Przyczepa lekka jednoosiowa", dmc:"DMC 750 kg nr 22", wymiary:"350x180x180 cm", kategoria:"B", cena:"70zł"},
+    {img:["img/trailer/przyczepa882.jpg","img/trailer/przyczepa881.jpg","img/trailer/przyczepa883.jpg","img/trailer/przyczepa884.jpg"], opis:"Przyczepa lekka dwuosiowa", dmc:"DMC 750 kg nr 88", wymiary:"250x140x35 cm <br> Plandeka kaptur", kategoria:"B", cena:"50zł"},
     {img:["img/trailer/przyczepa5.jpg"], opis:"Przyczepa lekka dwuosiowa", dmc:"DMC 750 kg nr 24", wymiary:"270x135x35 cm", kategoria:"B", cena:"50zł"},
     {img:["img/trailer/przyczepa10.jpg"], opis:"Przyczepa lekka dwuosiowa", dmc:"DMC 550 kg nr 40", wymiary:"300x150x185 cm", kategoria:"B", cena:"70zł"},
     {img:["img/trailer/przyczepa8.jpg"], opis:"Przyczepa lekka jednoosiowa motocyklowa", dmc:"DMC 300 kg nr 39", wymiary:"250x150x15 cm", kategoria:"B", cena:"50zł"},
