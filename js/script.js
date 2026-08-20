@@ -6,6 +6,7 @@
 const przyczepy = [
     {img:["img/trailer/przyczepa12.jpg","img/trailer/przyczepa13.jpg"], opis:"Przyczepa laweta", dmc:"DMC 2000 kg nr 46", wymiary:"300x150cm<br>Przewóz minikoparek, quadów itd.", kategoria:"B+E", cena:"100zł"},
     {img:["img/trailer/przyczepa14.jpg","img/trailer/przyczepa141.jpg"], opis:"Przyczepa laweta", dmc:"DMC 2700 kg nr 56", wymiary:"510x210cm<br>Przewóz samochodów, wyciągarka elektryczna", kategoria:"B+E", cena:"150zł"},
+    {img:["img/trailer/przyczepa155.jpeg","img/trailer/przyczepa156.jpeg","img/trailer/przyczepa157.jpeg","img/trailer/przyczepa158.jpeg","img/trailer/przyczepa151.jpeg","img/trailer/przyczepa152.jpeg","img/trailer/przyczepa153.jpeg","img/trailer/przyczepa154.jpeg","img/trailer/przyczepa159.jpeg","img/trailer/przyczepa1510.jpeg"], opis:"Przyczepa wywrotka dwuosiowa", dmc:"DMC 750 kg nr 45", wymiary:"300x150x30cm<br>Hydraulika manualna", kategoria:"B", cena:"150zł"},
     {img:["img/trailer/przyczepa1.jpg"], opis:"Przyczepa laweta dwuosiowa", dmc:"DMC 2700 kg nr 36", wymiary:"400x200x70 cm", kategoria:"B+E", cena:"100zł"},
     {img:["img/trailer/przyczepa2.jpg"], opis:"Przyczepa lekka dwuosiowa", dmc:"DMC 700 kg nr 35", wymiary:"250x135x160 cm", kategoria:"B", cena:"50zł"},
     {img:["img/trailer/przyczepa3.jpg"], opis:"Przyczepa lekka jednoosiowa", dmc:"DMC 700 kg nr 21", wymiary:"250x125x140 cm", kategoria:"B", cena:"50zł"},
@@ -15,7 +16,7 @@ const przyczepy = [
     {img:["img/trailer/przyczepa10.jpg"], opis:"Przyczepa lekka dwuosiowa", dmc:"DMC 550 kg nr 40", wymiary:"300x150x185 cm", kategoria:"B", cena:"70zł"},
     {img:["img/trailer/przyczepa8.jpg"], opis:"Przyczepa lekka jednoosiowa motocyklowa", dmc:"DMC 300 kg nr 39", wymiary:"250x150x15 cm", kategoria:"B", cena:"50zł"},
     {img:["img/trailer/przyczepa9.jpg"], opis:"Przyczepa lekka dwuosiowa", dmc:"DMC 600 kg nr 30", wymiary:"600x105x25 cm", kategoria:"B", cena:"100zł"},
-    {img:["img/trailer/przyczepa11.jpg"], opis:"Przyczepa lekka jednoosiowa", dmc:"DMC 750 kg nr 41", wymiary:"375x210", kategoria:"B", cena:"100zł"}
+    {img:["img/trailer/przyczepa11.jpg"], opis:"Przyczepa lekka jednoosiowa", dmc:"DMC 750 kg nr 41", wymiary:"375x210cm", kategoria:"B", cena:"100zł"}
 ];
 
 // === DANE PRZYCZEP DO SPRZEDAŻY (NOWE) ===
